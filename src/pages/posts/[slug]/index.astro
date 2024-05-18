@@ -1,0 +1,34 @@
+---
+import { type CollectionEntry, getCollection } from 'astro:content'
+import Layout from '@/layouts/Layout.astro'
+import type { GetStaticPaths } from 'astro'
+
+interface Props {
+  post: CollectionEntry<'posts'>
+}
+
+export const getStaticPaths = (async () => {
+  const posts = await getCollection('posts')
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }))
+}) satisfies GetStaticPaths
+
+const { post } = Astro.props
+const { Content } = await post.render()
+---
+
+
+<Layout 
+  title={post.data.title}
+  description={post.data.description},
+  image={`${import.meta.env.SITE}/posts/${post.slug}/og.png`}
+  canonicalUrl={`${import.meta.env.SITE}/posts/${post.slug}/`}
+  type='article'
+>
+    <article class="prose">
+        <h1>{post.data.title}</h1>
+        <Content />
+    </article>
+</Layout>

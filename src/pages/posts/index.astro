@@ -1,0 +1,14 @@
+---
+import { getCollection } from 'astro:content'
+import Layout from '@/layouts/Layout.astro'
+
+const posts = await getCollection('posts')
+---
+
+<Layout 
+    title='Posts',
+    canonicalUrl={`${import.meta.env.SITE}/posts/`}
+>
+    {posts.map((post) => <a href={`/posts/${post.slug}`}>{post.data.title}</a>)}
+</Layout>
+
