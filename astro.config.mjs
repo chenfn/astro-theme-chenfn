@@ -8,6 +8,7 @@ import sitemap from '@astrojs/sitemap'
 // https://astro.build/config
 export default defineConfig({
   site: 'https://chenfn.com',
+  prefetch: true,
   integrations: [
     UnoCSS({
       injectReset: true, // or a path to the reset file
