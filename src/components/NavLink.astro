@@ -1,0 +1,38 @@
+---
+interface Props {
+  name: string
+  link: string
+  icon: string
+}
+
+const activeStyle = 'active opacity-100 text-black dark:text-white'
+const inactiveStyle = 'opacity-80 hover:opacity-90'
+
+const { name, link, icon } = Astro.props
+const { pathname } = Astro.url
+---
+
+<a href={link} data-astro-prefetch class:list={["nav-link", pathname == link ? activeStyle : inactiveStyle]}>
+    <div class={icon}></div> {name}
+</a>
+
+<style>
+.nav-link {
+  --uno-apply: "mr-6";
+}
+
+.active {
+  position: relative;
+}
+.active::after {
+  position: absolute;
+  display: block;
+  left: 0;
+  right: 0;
+  bottom: -20px;
+  margin: auto;
+  content: ".";
+  font-size: 2rem;
+  text-align: center;
+} 
+</style>

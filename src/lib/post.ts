@@ -14,7 +14,7 @@ export const fetchPosts = async () => {
   })
 }
 
-export const fetchTags = async (needCount?: boolean) => {
+export const fetchTags = async () => {
   const tags = new Map<string, number>()
   const posts = await fetchPosts()
   posts.map((post) => {
@@ -26,24 +26,15 @@ export const fetchTags = async (needCount?: boolean) => {
       tags.set(tag, (tags.get(tag) || 0) + 1)
     })
   })
-
-  if (needCount) {
-    return tags
-  }
-  return Array.from(tags.keys())
+  return tags
 }
 
-export const fetchCategories = async (needCount?: boolean) => {
+export const fetchCategories = async () => {
   const categories = new Map<string, number>()
   const posts = await fetchPosts()
   posts.map((post) => {
     const category = post.data.category ? post.data.category : 'default'
     categories.set(category, (categories.get(category) || 0) + 1)
   })
-
-  if (needCount) {
-    return categories
-  }
-
-  return Array.from(categories.keys())
+  return categories
 }

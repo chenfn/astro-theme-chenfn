@@ -1,5 +1,7 @@
 ---
+import { ViewTransitions } from 'astro:transitions'
 import Head, { type HeadProps } from '@/components/Head.astro'
+import Header from '@/components/Header.astro'
 
 type Props = HeadProps
 
@@ -8,9 +10,11 @@ const { ...head } = Astro.props
 <html lang="en">
   <head>
     <Head {...head} />
+    <ViewTransitions />
   </head>
-  <body>
-    <main>
+  <body class="bg-base color-base max-w-3xl mx-auto px-6">
+    <Header />
+    <main class="px-3">
         <slot />
     </main>
   </body>

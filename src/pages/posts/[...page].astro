@@ -1,0 +1,40 @@
+---
+import type { CollectionEntry } from 'astro:content'
+import PostPreview from '@/components/PostPreview.astro'
+import Layout from '@/layouts/Layout.astro'
+import { fetchPosts } from '@/lib/post'
+import type { GetStaticPaths, Page } from 'astro'
+
+export const prerender = true
+export const getStaticPaths = (async ({ paginate }) => {
+  const allPosts = await fetchPosts()
+  return paginate(allPosts, { pageSize: 10, props: {} })
+}) satisfies GetStaticPaths
+
+interface Props {
+  page: Page<CollectionEntry<'posts'>>
+}
+
+const { page } = Astro.props
+---
+
+<Layout title='Blog' description='Posts'>
+    <h1 class="mb-6 mt-5 text-2xl font-bold">Blog</h1>
+    {page.data.length == 0 && <p>No posts yet.</p>}
+
+    {
+        page.data.length > 0 && (
+            <div>
+                <section>
+                    <ul>
+                        {
+                            page.data.map((p) => (
+                                <PostPreview post={p} />
+                            ))
+                        }
+                    </ul>
+                </section>
+            </div>
+        )
+    }
+</Layout>

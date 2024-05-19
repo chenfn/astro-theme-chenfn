@@ -1,0 +1,25 @@
+---
+import NavLink from './NavLink.astro'
+import ThemeToggle from './ThemeToggle.astro'
+---
+
+<nav class="flex items-start py-8 px-3">
+    <ul class="flex flex-wrap p-0 m-0 mr-auto">
+        <li class="nav-item">
+            <NavLink link='/' name='Home' icon='i-ri:home-4-line' />
+        </li>
+        <li class="nav-item">
+            <NavLink link='/posts' name='Posts' icon='i-ri:quill-pen-line' />
+        </li>
+        <li class="nav-item">
+            <NavLink link='/tags' name='Tags' icon='i-ri:price-tag-3-line' />
+        </li>
+    </ul>
+    <ThemeToggle />
+</nav>
+
+<style>
+.nav-item {
+  --uno-apply: "list-none opacity-80 text-size-sm decoration-none";
+}
+</style>

@@ -1,0 +1,29 @@
+---
+import type { CollectionEntry } from 'astro:content'
+import { formatDate } from '@/lib/date'
+
+interface Props {
+  post: CollectionEntry<'posts'>
+}
+
+const { post } = Astro.props
+
+const postDate = post.data.updatedAt ?? post.data.createdAt
+---
+
+<article class="flex flex-col gap-2 sm:flex-row sm:gap-x-4">
+    <time datetime={postDate.toISOString()} class="min-w-[120px] font-grotesk text-sm">
+        {formatDate(postDate, false)}
+    </time>
+
+    {post.data.draft && <span class="text-red-500">(Draft) </span>}
+    <a  
+        data-astro-prefetch
+        href={`/posts/${post.slug}`}
+        class="transition-all dark:hover:text-gray hover:text-gray cursor-pointer text-sm">
+        {post.data.title}
+    </a>
+    <p class="line-clamp-3 block text-sm italic">
+        {post.data.description}
+    </p>
+</article>

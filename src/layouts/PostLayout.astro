@@ -1,0 +1,29 @@
+---
+import type { CollectionEntry } from 'astro:content'
+import Layout from './Layout.astro'
+
+interface Props {
+  post: CollectionEntry<'posts'>
+}
+
+const { post } = Astro.props
+// const { headings } = await post.render()
+---
+
+<Layout
+    title={post.data.title}
+    description={post.data.description},
+    image={`${import.meta.env.SITE}/posts/${post.slug}/og.png`}
+    canonicalUrl={`${import.meta.env.SITE}/posts/${post.slug}/`}
+    type='article'
+>
+    <div class="m-auto mb-8">
+
+        <div class="mt-8 gap-x10 lg:flex lg:items-start">
+            <!-- {headings.length && <TOC headings={headings} />} -->
+            <article class="prose">
+                <slot />
+            </article>
+        </div>
+    </div>
+</Layout>

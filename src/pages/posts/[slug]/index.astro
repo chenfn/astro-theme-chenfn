@@ -1,6 +1,9 @@
 ---
-import { type CollectionEntry, getCollection } from 'astro:content'
-import Layout from '@/layouts/Layout.astro'
+import type { CollectionEntry } from 'astro:content'
+import Tag from '@/components/Tag.astro'
+import PostLayout from '@/layouts/PostLayout.astro'
+import { formatDate } from '@/lib/date'
+import { fetchPosts } from '@/lib/post'
 import type { GetStaticPaths } from 'astro'
 
 interface Props {
@@ -8,7 +11,7 @@ interface Props {
 }
 
 export const getStaticPaths = (async () => {
-  const posts = await getCollection('posts')
+  const posts = await fetchPosts()
   return posts.map((post) => ({
     params: { slug: post.slug },
     props: { post },
@@ -16,19 +19,39 @@ export const getStaticPaths = (async () => {
 }) satisfies GetStaticPaths
 
 const { post } = Astro.props
-const { Content } = await post.render()
+const { Content, remarkPluginFrontmatter } = await post.render()
 ---
 
 
-<Layout 
-  title={post.data.title}
-  description={post.data.description},
-  image={`${import.meta.env.SITE}/posts/${post.slug}/og.png`}
-  canonicalUrl={`${import.meta.env.SITE}/posts/${post.slug}/`}
-  type='article'
->
-    <article class="prose">
-        <h1>{post.data.title}</h1>
-        <Content />
-    </article>
-</Layout>
+<PostLayout post={post}>
+  <h1>{ post.data.title }</h1>
+  <div class="flex flex-row items-center dark:text-zinc-500 text-sm mb-4 font-grotesk">
+    <>
+      <div class="i-ri:calendar-line mr-1"></div>
+      { formatDate(post.data.createdAt) }
+      { post.data.updatedAt ? <span id="update-time" title={formatDate(post.data.updatedAt)}>(已编辑)</span> : ""  }
+    </>
+
+    <>
+      <div class="i-tabler:clock mr-1 ml-4"></div>
+      { remarkPluginFrontmatter.minutesRead }
+    </>
+
+    <>
+      <div class="i-tabler:category mr-1 ml-4"></div>
+      { post.data.category || "default" }
+    </>
+
+    <>
+      <div class="i-tabler:click mr-1 ml-4"></div>
+    </>
+  </div>
+
+  <div class="flex flex-row items-center flex-wrap m-auto mb-8 text-sm gap-2 sm:gap-3">
+      { post.data.tags?.map((item) => (
+        <Tag name={item} link={true} />
+      ))}
+  </div>
+
+  <Content />
+</PostLayout>

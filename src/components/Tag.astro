@@ -1,0 +1,25 @@
+---
+interface Props {
+  name: string
+  link: boolean
+}
+
+const { name, link } = Astro.props
+---
+
+{link ? 
+    <a data-astro-prefetch href={`/tags/${name}`} title="tag details" class="decoration-none">
+        <span class="mr-1 text-pretty tag bg-gradient-to-lightblue font-grotesk"># {name}</span>
+    </a>
+    :
+    <span class="mr-1 text-pretty tag bg-gradient-to-lightblue font-grotesk"># {name}</span>
+}
+
+<style>
+    .tag {
+      color: rgb(20, 184, 166, 1);
+      background-color: rgb(20, 184, 166, 0.2);
+      border-radius: 3px;
+      padding: 2px 5px;
+    }
+</style>

@@ -1,0 +1,11 @@
+:root {
+    --c-bg: #fff;
+}
+
+html {
+    background-color: var(--c-bg);
+}
+
+html.dark {
+    --c-bg: #000;
+}
