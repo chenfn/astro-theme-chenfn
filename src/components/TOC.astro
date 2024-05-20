@@ -1,0 +1,21 @@
+---
+import type { MarkdownHeading } from 'astro'
+
+interface Props {
+  headings: MarkdownHeading[]
+}
+
+const { headings } = Astro.props
+---
+
+<div class="sticky top-[10vh] max-w-[250px] mr-4">
+    <ul class="pointer-events-auto flex flex-col space-y-2 text-zinc-500">
+        {headings.map((node) => (
+            <li class="text-[12px] font-medium leading-[18px] transition-colors duration-300">
+                <a href={`#${node.slug}`} class="block w-full">
+                    {node.text}
+                </a>
+            </li>
+        ))}
+    </ul>
+</div>

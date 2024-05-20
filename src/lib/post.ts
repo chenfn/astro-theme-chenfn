@@ -1,4 +1,4 @@
-import { type CollectionEntry, getCollection } from 'astro:content'
+import { getCollection } from 'astro:content'
 
 export const fetchPosts = async () => {
   // if PROD, filter draft post

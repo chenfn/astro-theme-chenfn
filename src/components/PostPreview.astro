@@ -13,7 +13,7 @@ const postDate = post.data.updatedAt ?? post.data.createdAt
 
 <article class="flex flex-col gap-2 sm:flex-row sm:gap-x-4">
     <time datetime={postDate.toISOString()} class="min-w-[120px] font-grotesk text-sm">
-        {formatDate(postDate, false)}
+        {formatDate(postDate)}
     </time>
 
     {post.data.draft && <span class="text-red-500">(Draft) </span>}

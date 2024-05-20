@@ -1,5 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content'
+import TOC from '@/components/TOC.astro'
 import Layout from './Layout.astro'
 
 interface Props {
@@ -7,7 +8,7 @@ interface Props {
 }
 
 const { post } = Astro.props
-// const { headings } = await post.render()
+const { headings } = await post.render()
 ---
 
 <Layout
@@ -17,13 +18,19 @@ const { post } = Astro.props
     canonicalUrl={`${import.meta.env.SITE}/posts/${post.slug}/`}
     type='article'
 >
-    <div class="m-auto mb-8">
-
-        <div class="mt-8 gap-x10 lg:flex lg:items-start">
-            <!-- {headings.length && <TOC headings={headings} />} -->
-            <article class="prose">
-                <slot />
-            </article>
-        </div>
+    <div class="m-auto mb-8 mt-8 gap-x10 lg:flex lg:items-start post-box">
+        {headings.length > 0 && 
+            <aside class="absolute left-full h-full pt-16 ml-16"><TOC headings={headings} /></aside>}
+        <article class="prose">
+            <slot />
+        </article>
     </div>
 </Layout>
+
+
+<style>
+.post-box {
+    position: relative;
+}
+
+</style>
