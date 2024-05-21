@@ -20,7 +20,9 @@ const { headings } = await post.render()
 >
     <div class="m-auto mb-8 mt-8 gap-x10 lg:flex lg:items-start post-box">
         {headings.length > 0 && 
-            <aside class="absolute left-full h-full pt-16 ml-16"><TOC headings={headings} /></aside>}
+            <aside class="absolute left-full h-full pt-16 hidden lg:block">
+                <TOC headings={headings} />
+            </aside>}
         <article class="prose">
             <slot />
         </article>
@@ -32,5 +34,4 @@ const { headings } = await post.render()
 .post-box {
     position: relative;
 }
-
 </style>
