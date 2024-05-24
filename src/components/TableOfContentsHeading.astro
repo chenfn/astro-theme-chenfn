@@ -1,0 +1,23 @@
+---
+import type { HeadingProps } from './TableOfContents.astro'
+
+type Props = HeadingProps
+
+const heading = Astro.props
+---
+
+<li>
+  <a href={'#' + heading.slug}>
+    {heading.text}
+  </a>
+
+  {
+    heading.subheadings.length > 0 && (
+      <ul>
+        {heading.subheadings.map((subheading) => (
+          <Astro.self {...subheading} />
+        ))}
+      </ul>
+    )  
+  }
+</li>
