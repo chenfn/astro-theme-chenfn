@@ -35,16 +35,19 @@ const { tag } = Astro.params
 ---
 
 <Layout title={`Tag: ${tag}`} description={`View all posts with the tag - ${tag}`}>
-    <h1 class="mb-6 mt-5 flex items-end gap-x-2 text-2xl font-bold">
-        <Tag name={tag} link={false} />
-    </h1>
-    <section>
-        <ul class="flex flex-col gap-y-3 text-start">
-            {
-                page.data.map((p) => (
-                    <PostPreview post={p} />
-                ))
-            }
-        </ul>
-    </section>
+    <div class="py-12 sm:py-16 lg:py-20">
+
+      <h1 class="mb-6 flex items-end gap-x-2 text-2xl font-bold">
+          <Tag name={tag} link={false} />
+      </h1>
+      <section>
+          <ul class="flex flex-col gap-y-3 text-start">
+              {
+                  page.data.map((p) => (
+                      <PostPreview post={p} />
+                  ))
+              }
+          </ul>
+      </section>
+    </div>
 </Layout>

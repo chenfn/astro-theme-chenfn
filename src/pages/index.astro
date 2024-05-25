@@ -1,5 +1,6 @@
 ---
 import type { HeadProps } from '@/components/Head.astro'
+import LatestPosts from '@/components/LatestPosts.astro'
 import Layout from '@/layouts/Layout.astro'
 import config from 'config'
 
@@ -13,5 +14,18 @@ const head: HeadProps = {
 ---
 
 <Layout {...head} >
-	<h1>Astro</h1>
+  <section class="space-y-4 mb-4 py-12 sm:py-16 lg:py-20">
+    <h1 class="font-bold text-2xl sm:text-3xl leading-9">
+      欢迎光临我的博客
+    </h1>
+    <p class="leading-9 text-lg">
+      我是<span class="font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-cyan-400">陈函数</span>, 一名普通开发者、平凡的人，这里是我的个人网站，在这里会分享一些技术文章和有趣的新玩意儿。
+    </p>
+    <div class="space-x-3">
+      <a href="https://github.com/chenfn"><div class="i-line-md:github-loop"></div></a>
+      <a href="/rss.xml"><div class="i-line-md:rss"></div></a>
+      <a href="mailto:chenfunc@163.com"><div class="i-line-md:email"></div></a>
+    </div>
+  </section>
+  <LatestPosts />  
 </Layout>

@@ -12,7 +12,7 @@ const { name, link, icon } = Astro.props
 const { pathname } = Astro.url
 ---
 
-<a href={link} data-astro-prefetch class:list={["nav-link", pathname == link ? activeStyle : inactiveStyle]}>
+<a href={link} class:list={["nav-link", pathname == link ? activeStyle : inactiveStyle]}>
     <div class={icon}></div> {name}
 </a>
 

@@ -1,12 +1,13 @@
 ---
-import { Image } from 'astro:assets'
 import NavLink from './NavLink.astro'
 import ThemeToggle from './ThemeToggle.astro'
 ---
 
 <nav class="flex items-start py-8 px-20">
     <div>
-        Brand
+        <a href="/">
+            <img src="/logo.svg" class="w-3em" />
+        </a>
     </div>
     <ul class="flex flex-wrap p-0 m-0 mr-auto flex-grow justify-center">
         <li class="nav-item">

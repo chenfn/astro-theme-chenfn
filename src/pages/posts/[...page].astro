@@ -19,22 +19,23 @@ const { page } = Astro.props
 ---
 
 <Layout title='Blog' description='Posts'>
-    <h1 class="mb-6 mt-5 text-2xl font-bold">Blog</h1>
-    {page.data.length == 0 && <p>No posts yet.</p>}
+    <div class="py-12 sm:py-16 lg:py-20">
+        {page.data.length == 0 && <p>No posts yet.</p>}
 
-    {
-        page.data.length > 0 && (
-            <div>
-                <section>
-                    <ul>
-                        {
-                            page.data.map((p) => (
-                                <PostPreview post={p} />
-                            ))
-                        }
-                    </ul>
-                </section>
-            </div>
-        )
-    }
+        {
+            page.data.length > 0 && (
+                <div>
+                    <section>
+                        <ul>
+                            {
+                                page.data.map((p) => (
+                                    <PostPreview post={p} />
+                                ))
+                            }
+                        </ul>
+                    </section>
+                </div>
+            )
+        }
+    </div>
 </Layout>
