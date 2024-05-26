@@ -11,7 +11,7 @@ const { post } = Astro.props
 const postDate = post.data.updatedAt ?? post.data.createdAt
 ---
 
-<article class="flex flex-col gap-2 sm:flex-row sm:gap-x-4">
+<article class="flex gap-2 sm:flex-row sm:gap-x-4">
     <time datetime={postDate.toISOString()} class="min-w-[120px] font-grotesk text-sm">
         {formatDate(postDate)}
     </time>
