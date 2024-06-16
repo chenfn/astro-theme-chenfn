@@ -2,6 +2,7 @@
 import type { CollectionEntry } from 'astro:content'
 import PostPreview from '@/components/PostPreview.astro'
 import Tag from '@/components/Tag.astro'
+import TitleSection from '@/components/TitleSection.astro'
 import Layout from '@/layouts/Layout.astro'
 import { fetchPosts, fetchTags } from '@/lib/post'
 import type { GetStaticPaths, Page } from 'astro'
@@ -35,11 +36,9 @@ const { tag } = Astro.params
 ---
 
 <Layout title={`Tag: ${tag}`} description={`View all posts with the tag - ${tag}`}>
-    <div class="py-12 sm:py-16 lg:py-20">
+    <TitleSection title={`# ${tag}`} description="" />
 
-      <h1 class="mb-6 flex items-end gap-x-2 text-2xl font-bold">
-          <Tag name={tag} link={false} />
-      </h1>
+    <div>
       <section>
             {
                 page.data.map((p) => (

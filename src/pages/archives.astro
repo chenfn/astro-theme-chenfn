@@ -1,4 +1,5 @@
 ---
+import TitleSection from "@/components/TitleSection.astro"
 import Layout from "@/layouts/Layout.astro"
 import { formatDate } from "@/lib/date"
 import { fetchPosts } from "@/lib/post"
@@ -7,6 +8,8 @@ const posts = await fetchPosts()
 ---
 
 <Layout title="Archive" description="All posts archive">
+    <TitleSection title="Archives" description="" />
+
     <div class="py-12 sm:py-16 lg:py-20 pl-2">
         <h2 class="text-xl font-bold mb-6">目前共有 {posts.length} 篇文章</h2>
         <ul class="">

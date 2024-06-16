@@ -1,7 +1,7 @@
 ---
 import type { CollectionEntry } from 'astro:content'
-// import Category from '@/components/Category.astro'
 import PostPreview from '@/components/PostPreview.astro'
+import TitleSection from '@/components/TitleSection.astro'
 import Layout from '@/layouts/Layout.astro'
 import { fetchCategory, fetchCategoryMap } from '@/lib/post'
 import type { GetStaticPaths, Page } from 'astro'
@@ -34,9 +34,8 @@ const description = categoryEntry ? categoryEntry.data.description : category
 ---
 
 <Layout title={`Category: ${title}`} description={description}>
-    <h1 class="mb-6 mt-5 flex items-end gap-x-2 text-2xl font-bold">
-        Category: <span class="mr-1 text-pretty tag bg-gradient-to-lightblue font-grotesk">{title}</span>
-    </h1>
+    <TitleSection title={title} description={description} />
+
     <section>
         <ul class="flex flex-col gap-y-3 text-start">
             {
