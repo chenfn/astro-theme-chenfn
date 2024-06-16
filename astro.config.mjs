@@ -1,4 +1,4 @@
-import cloudflare from "@astrojs/cloudflare";
+// import cloudflare from "@astrojs/cloudflare";
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import expressiveCode from 'astro-expressive-code';
@@ -28,14 +28,14 @@ export default defineConfig({
     SVG: true,
     Logger: 2
   })],
-  image: {
-    service: passthroughImageService(),
-  },
-  output: "hybrid",
-  adapter: cloudflare({
-    platformProxy: {
-      enabled: true,
-      persist: true,
-    }
-  })
+  // image: {
+  //   service: passthroughImageService(),
+  // },
+  // output: "hybrid",
+  // adapter: cloudflare({
+  //   platformProxy: {
+  //     enabled: true,
+  //     persist: true,
+  //   }
+  // })
 });
