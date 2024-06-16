@@ -7,13 +7,16 @@
     "start": "astro dev",
     "build": "astro check && astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "wrangler:preview": "wrangler pages dev ./dist"
   },
   "dependencies": {
     "@astrojs/check": "^0.7.0",
+    "@astrojs/cloudflare": "^10.4.0",
     "@astrojs/mdx": "^3.0.1",
     "@astrojs/rss": "^4.0.6",
     "@astrojs/sitemap": "^3.1.5",
+    "@playform/compress": "^0.0.12",
     "@vercel/og": "^0.6.2",
     "astro": "^4.9.3",
     "dayjs": "^1.11.11",

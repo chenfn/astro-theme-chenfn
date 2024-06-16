@@ -8,7 +8,7 @@ const head: HeadProps = {
   title: config.title,
   description: config.description,
   canonicalUrl: `${import.meta.env.SITE}/`,
-  image: config.image,
+  image: (config.logo?.src as string) || "",
   type: 'website',
 }
 ---
