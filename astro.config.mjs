@@ -33,4 +33,9 @@ export default defineConfig({
       Logger: 2,
     }),
   ],
+  // adapter: cloudflare({
+  //   platformProxy: {
+  //     enabled: true,
+  //   },
+  // }),
 })

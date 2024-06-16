@@ -11,22 +11,18 @@ const allTags = Array.from(await fetchTags())
 
     {
         allTags.length > 0 && (
-            <ul class="flex flex-col gap-y-3">
-                {allTags.map(([tag, val]) => (
-                   <li class="flex items-center gap-x-2">
-                        <a 
-                            data-astro-prefetch
-                            href={`/tags/${tag}`}
-                            title={`View posts with the tag ${tag}`}
-                            class="inline-block underline-offset-4 underline font-grotesk">
-                            #{tag}
-                        </a>
-                        <span class="inline-block font-grotesk">
-                            - {val} 篇文章
-                        </span>
-                   </li> 
-                ))}
-            </ul>
+            <div>
+            {allTags.map(([tag, val]) => (
+                    <a 
+                        data-astro-prefetch
+                        href={`/tags/${tag}`}
+                        title={`View posts with the tag ${tag}`}
+                        style={`font-size: ${(Math.log(val || 1) + 1) * 1}rem`}
+                        class="inline-block underline-offset-4 underline font-grotesk m-4">
+                        {tag}
+                    </a>
+            ))}
+            </div>
         )
     }
     </div>

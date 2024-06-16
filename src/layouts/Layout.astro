@@ -12,25 +12,12 @@ const { ...head } = Astro.props
     <Head {...head} />
     <ViewTransitions />
   </head>
-  <body class="bg-base color-base min-h-screen flex flex-col">
-    <Header />
-    <div class="flex-1 flex flex-col sm:flex-row">
-      <aside class="order-first side">
-        <slot name="left-aside" />
-      </aside>
-      <main class="flex-1">
+  <body class="bg-base color-base min-h-screen">
+    <div class="mx-auto max-w-screen-lg px-4 sm:px-6 lg:px-8">
+      <Header />
+      <main>
         <slot />
       </main>
-      <aside class="side">
-        <slot name="right-aside" />
-      </aside>
     </div>
   </body>
 </html>
-
-
-<style>
-  .side {
-    width: calc((100% - 65ch) / 2);
-  }
-</style>

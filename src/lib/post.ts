@@ -1,4 +1,4 @@
-import { getCollection } from 'astro:content'
+import { type CollectionEntry, getCollection, getEntry } from 'astro:content'
 
 export const fetchPosts = async () => {
   // if PROD, filter draft post
@@ -29,12 +29,23 @@ export const fetchTags = async () => {
   return tags
 }
 
-export const fetchCategories = async () => {
-  const categories = new Map<string, number>()
+export const fetchCategoryMap = async () => {
+  const categoryMap = new Map<string, CollectionEntry<'posts'>[]>()
   const posts = await fetchPosts()
   posts.map((post) => {
     const category = post.data.category ? post.data.category : 'default'
-    categories.set(category, (categories.get(category) || 0) + 1)
+
+    let posts = categoryMap.get(category)
+    if (!posts) {
+      posts = [];
+    }
+    posts.push(post)
+
+    categoryMap.set(category, posts)
   })
-  return categories
+  return categoryMap
+}
+
+export const fetchCategory = async (slug: string) => {
+  return await getEntry('categories', slug)
 }

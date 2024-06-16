@@ -8,22 +8,22 @@ interface Props {
 
 const { post } = Astro.props
 
-const postDate = post.data.updatedAt ?? post.data.createdAt
 ---
 
-<article class="flex gap-2 sm:flex-row sm:gap-x-4">
-    <time datetime={postDate.toISOString()} class="min-w-[120px] font-grotesk text-sm">
-        {formatDate(postDate)}
-    </time>
+<article class="flex flex-col gap-1 sm:gap-x-4 mb-8">
+    <h1 class="text-lg mt-1 mb-1">
+        {post.data.draft && <span class="text-red-500">(Draft)</span>} 
+        <a  
+            data-astro-prefetch
+            href={`/posts/${post.slug}`}
+            class="transition-all dark:hover:text-gray hover:text-gray cursor-pointer decoration-none">
+            {post.data.title}
+        </a>
+    </h1>
 
-    {post.data.draft && <span class="text-red-500">(Draft) </span>}
-    <a  
-        data-astro-prefetch
-        href={`/posts/${post.slug}`}
-        class="transition-all dark:hover:text-gray hover:text-gray cursor-pointer text-sm">
-        {post.data.title}
-    </a>
-    <p class="line-clamp-3 block text-sm italic">
-        {post.data.description}
-    </p>
+    <div class="color-base text-op-60 dark:text-op-60 text-sm">
+        <span>
+            {formatDate(post.data.createdAt)}{post.data.updatedAt && "（已更新）"}
+        </span>
+    </div>
 </article>

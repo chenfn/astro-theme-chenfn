@@ -26,15 +26,11 @@ const { page } = Astro.props
             page.data.length > 0 && (
                 <div>
                     <section>
-                        <ul>
-                            {
-                                page.data.map((p) => (
-                                    <li>
-                                        <PostPreview post={p} />
-                                    </li>
-                                ))
-                            }
-                        </ul>
+                        {
+                            page.data.map((p) => (
+                                <PostPreview post={p} />
+                            ))
+                        }
                     </section>
                 </div>
             )

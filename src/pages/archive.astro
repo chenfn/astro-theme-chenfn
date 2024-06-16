@@ -1,0 +1,24 @@
+---
+import Layout from "@/layouts/Layout.astro"
+import { formatDate } from "@/lib/date"
+import { fetchPosts } from "@/lib/post"
+
+const posts = await fetchPosts()
+---
+
+<Layout title="Archive" description="All posts archive">
+    <div class="py-12 sm:py-16 lg:py-20 pl-2">
+        <h2 class="text-xl font-bold mb-6">目前共有 {posts.length} 篇文章</h2>
+        <ul class="">
+            {posts.map((post) => (
+                <li class="mb-2 archive-item b-l-black dark:b-l-white b-l-4 pl-5 flex flex-row justify-between">
+                    <a href={`/posts/${post.slug}`}>{post.data.title}</a>
+                    <span>{formatDate(post.data.updatedAt ?? post.data.createdAt)}</span>
+                </li>        
+            ))}
+        </ul>
+    </div>
+</Layout>
+
+<style>
+</style>

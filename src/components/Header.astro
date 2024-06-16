@@ -3,18 +3,21 @@ import NavLink from './NavLink.astro'
 import ThemeToggle from './ThemeToggle.astro'
 ---
 
-<nav class="flex items-start py-8 px-0 lg:px-20">
+<nav class="flex items-center py-8">
     <div>
         <a href="/">
             <img src="/logo.svg" alt="logo" class="w-3em" />
         </a>
     </div>
-    <ul class="flex flex-wrap p-0 m-0 mr-auto flex-grow justify-center">
-        <li class="nav-item">
-            <NavLink link='/' name='Home' icon='i-ri:home-4-line' />
-        </li>
+    <ul class="flex flex-wrap ml-2 mr-auto flex-grow">
         <li class="nav-item">
             <NavLink link='/posts' name='Posts' icon='i-ri:quill-pen-line' />
+        </li>
+        <li class="nav-item">
+            <NavLink link='/archive' name='Archive' icon='i-ri:archive-line' />
+        </li>
+        <li class="nav-item">
+            <NavLink link="/categories" name="Categories" icon="i-tabler:category" />
         </li>
         <li class="nav-item">
             <NavLink link='/tags' name='Tags' icon='i-ri:price-tag-3-line' />
@@ -25,6 +28,6 @@ import ThemeToggle from './ThemeToggle.astro'
 
 <style>
 .nav-item {
-  --uno-apply: "list-none opacity-80 text-size-sm decoration-none";
+  --uno-apply: "list-none opacity-80 text-size-sm decoration-none mr-4";
 }
 </style>

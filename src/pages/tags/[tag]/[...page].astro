@@ -41,13 +41,11 @@ const { tag } = Astro.params
           <Tag name={tag} link={false} />
       </h1>
       <section>
-          <ul class="flex flex-col gap-y-3 text-start">
-              {
-                  page.data.map((p) => (
-                      <PostPreview post={p} />
-                  ))
-              }
-          </ul>
+            {
+                page.data.map((p) => (
+                    <PostPreview post={p} />
+                ))
+            }
       </section>
     </div>
 </Layout>

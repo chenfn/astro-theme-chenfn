@@ -1,0 +1,24 @@
+---
+import type { CollectionEntry } from 'astro:content'
+import { formatReleativeDate } from '@/lib/date'
+import { fetchCategory } from '@/lib/post'
+
+interface Props {
+    name: string
+    posts: CollectionEntry<'posts'>[] | undefined
+}
+
+const { name, posts } = Astro.props
+const category = await fetchCategory(name);
+const count = posts ? posts.length : 0;
+const recentTime = posts ? formatReleativeDate(posts[0].data.updatedAt ?? posts[0].data.createdAt) : ""
+---
+
+<a href=`/categories/${category?.slug}` class="flex flex-col justify-between gap-4 bg-[#CCC] dark:bg-[#111] bg-op-10 p-4 rd-sm">
+    <h2 class="text-lg font-bold">{category?.data.title}</h2>
+    <p class="color-base text-op-60 dark:text-op-60 min-h-60px">{category?.data.description}</p>
+    <div class="color-base text-op-40 dark:text-op-60 text-sm font-grotesk flex flex-row justify-between">
+        <span><div class="i-ri:article-line"></div> {`${count} 篇文章` }</span>
+        <span><div class="i-ri:time-line"></div> {recentTime ? `更新于 ${recentTime}` : ""}</span>
+    </div>
+</a>

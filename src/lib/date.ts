@@ -7,5 +7,15 @@ dayjs.locale('zh-cn')
 
 export function formatDate(d: string | Date) {
   const date = dayjs(d)
-  return date.format('YYYY 年 M 月 D 日 dddd')
+  return date.format('YYYY 年 MM 月 DD 日 dddd')
+}
+
+export function formatPostDate(d: string | Date) {
+  const date = dayjs(d)
+  return date.format('YYYY/MM/DD')
+}
+
+export function formatReleativeDate(d: string | Date) {
+  const date = dayjs(d)
+  return date.fromNow()
 }

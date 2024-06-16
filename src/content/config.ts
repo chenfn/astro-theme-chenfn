@@ -26,6 +26,16 @@ const postCollection = defineCollection({
   }),
 })
 
+const categoryCollection = defineCollection({
+  type: 'content',
+  schema: () => z.object({
+    title: z.string(),
+    description: z.string(),
+    icon: z.string().optional()
+  }),
+})
+
 export const collections = {
   posts: postCollection,
+  categories: categoryCollection,
 }

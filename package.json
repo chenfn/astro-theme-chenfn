@@ -7,20 +7,21 @@
     "start": "astro dev",
     "build": "astro check && astro build",
     "preview": "astro preview",
-    "astro": "astro",
-    "wrangler:preview": "wrangler pages dev ./dist"
+    "astro": "astro"
   },
   "dependencies": {
     "@astrojs/check": "^0.7.0",
     "@astrojs/cloudflare": "^10.4.0",
-    "@astrojs/mdx": "^3.0.1",
+    "@astrojs/mdx": "^3.1.0",
     "@astrojs/rss": "^4.0.6",
     "@astrojs/sitemap": "^3.1.5",
     "@playform/compress": "^0.0.12",
     "@vercel/og": "^0.6.2",
-    "astro": "^4.9.3",
+    "add": "^2.0.6",
+    "astro": "^4.10.2",
     "dayjs": "^1.11.11",
     "mdast-util-to-string": "^4.0.0",
+    "reading-time": "^1.5.0",
     "reading-time-estimator": "^1.11.0",
     "typescript": "^5.4.5"
   },
