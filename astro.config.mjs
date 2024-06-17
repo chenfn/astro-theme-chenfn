@@ -1,11 +1,12 @@
+
+import { defineConfig } from 'astro/config'
 // import cloudflare from "@astrojs/cloudflare";
 import mdx from '@astrojs/mdx'
 import sitemap from '@astrojs/sitemap'
-import expressiveCode from 'astro-expressive-code'
-import { defineConfig } from 'astro/config'
 import UnoCSS from 'unocss/astro'
-import config from './site.config'
+import expressiveCode from 'astro-expressive-code'
 import { remarkReadingTime } from './src/lib/remarkReadingTime'
+import config from './site.config'
 
 // https://astro.build/config
 export default defineConfig({
@@ -33,9 +34,10 @@ export default defineConfig({
       Logger: 2,
     }),
   ],
-  // adapter: cloudflare({
-  //   platformProxy: {
-  //     enabled: true,
-  //   },
-  // }),
+  // // cloudflare, deno not support astro image optimization
+  // image: {
+  //   service: passthroughImageService()
+  // },
+  // output: 'server',
+  // adapter: cloudflare(),
 })
