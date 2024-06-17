@@ -8,8 +8,8 @@ interface Props {
 const { title, description } = Astro.props
 ---
 
-<section class="mx-auto w-full md:w-auto text-center mb-24">
-    <h1 class="title text-balance text-2xl font-bold inline-block">{title}</h1>
+<section class="mx-auto w-full md:w-auto text-center mb-24" transition:name="title">
+    <h1 class="title text-balance text-2xl font-bold inline-block" transition:animate="slide">{title}</h1>
     <p class="mt-4 text-pretty text-lg text-neutral-600 dark:text-neutral-400">{description}</p>
 </section>
 
