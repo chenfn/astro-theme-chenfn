@@ -5,6 +5,7 @@ import mdx from '@astrojs/mdx'
 import sitemap from '@astrojs/sitemap'
 import UnoCSS from 'unocss/astro'
 import expressiveCode from 'astro-expressive-code'
+import rehypeExternalLinks from 'rehype-external-links';
 import { remarkReadingTime } from './src/lib/remarkReadingTime'
 import config from './site.config'
 
@@ -13,7 +14,15 @@ export default defineConfig({
   site: config.url,
   prefetch: true,
   markdown: {
-    rehypePlugins: [remarkReadingTime],
+    rehypePlugins: [
+      remarkReadingTime,
+      [
+        rehypeExternalLinks,
+        {
+          content: { type: 'text', value: '' }
+        }
+      ],
+    ],
   },
   integrations: [
     UnoCSS({
