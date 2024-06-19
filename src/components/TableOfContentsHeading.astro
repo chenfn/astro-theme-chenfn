@@ -3,18 +3,18 @@ import type { HeadingProps } from './TableOfContents.astro'
 
 type Props = HeadingProps
 
-const heading = Astro.props
+const { depth, slug, subheadings, text } = Astro.props
 ---
 
-<li>
-  <a href={'#' + heading.slug}>
-    {heading.text}
+<li class={`${depth > 2 ? 'ms-2' : ''}`}>
+  <a href={'#' + slug} class={`line-clamp-2 ${depth <= 2 ? 'mt-2' : 'mt-1 text-sm'} transition-all hover:color-base`}>
+    {text}
   </a>
 
   {
-    heading.subheadings.length > 0 && (
+    subheadings.length > 0 && (
       <ul>
-        {heading.subheadings.map((subheading) => (
+        {subheadings.map((subheading) => (
           <Astro.self {...subheading} />
         ))}
       </ul>

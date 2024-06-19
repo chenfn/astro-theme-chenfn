@@ -28,34 +28,36 @@ const category_name = categoryEntry ? categoryEntry.data.title : category
 
 
 <PostLayout post={post}>
-  <h1 class="my-0">{ post.data.title }</h1>
-  <div class="flex flex-row items-center dark:text-zinc-500 text-sm mb-4 font-grotesk">
-    <>
-      <div class="i-ri:calendar-line mr-1"></div>
-      { formatPostDate(post.data.createdAt) }
-      { post.data.updatedAt ? <span id="update-time" title={formatPostDate(post.data.updatedAt)}>(已编辑)</span> : ""  }
-    </>
+  <div class="w-full">
 
-    <>
-      <div class="i-tabler:clock mr-1 ml-4"></div>
-      { remarkPluginFrontmatter.minutesRead }
-    </>
+    <h1 class="my-0">{ post.data.title }</h1>
+    <div class="flex flex-row items-center dark:text-zinc-500 text-sm mb-4 font-grotesk">
+      <>
+        <div class="i-ri:calendar-line mr-1"></div>
+        { formatPostDate(post.data.createdAt) }
+        { post.data.updatedAt ? <span id="update-time" title={formatPostDate(post.data.updatedAt)}>(已编辑)</span> : ""  }
+      </>
 
-    <>
-      <div class="i-tabler:category mr-1 ml-4"></div>
-      <a href={`/categories/${category}`} class="decoration-none">{ category_name }</a>
-    </>
+      <>
+        <div class="i-tabler:clock mr-1 ml-4"></div>
+        { remarkPluginFrontmatter.minutesRead }
+      </>
 
-    <>
-      <div class="i-tabler:click mr-1 ml-4"></div>
-    </>
+      <>
+        <div class="i-tabler:category mr-1 ml-4"></div>
+        <a href={`/categories/${category}`} class="decoration-none">{ category_name }</a>
+      </>
+
+      <>
+        <div class="i-tabler:click mr-1 ml-4"></div>
+      </>
+    </div>
+
+    <div class="flex flex-row items-center flex-wrap m-auto mb-8 text-sm gap-2 sm:gap-3">
+        { post.data.tags?.map((item) => (
+          <Tag name={item} link={true} />
+        ))}
+    </div>
+    <Content />
   </div>
-
-  <div class="flex flex-row items-center flex-wrap m-auto mb-8 text-sm gap-2 sm:gap-3">
-      { post.data.tags?.map((item) => (
-        <Tag name={item} link={true} />
-      ))}
-  </div>
-
-  <Content />
 </PostLayout>

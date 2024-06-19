@@ -13,11 +13,9 @@ const { ...head } = Astro.props
     <ViewTransitions />
   </head>
   <body class="bg-base color-base min-h-screen">
-    <div class="mx-auto max-w-screen-lg px-4 sm:px-6 lg:px-8">
+    <main class="min-h-screen max-w-screen-lg mx-auto px-6 pb-10 pt-7 sm:px-8 lg:px-10 leading-relaxed">
       <Header />
-      <main>
-        <slot />
-      </main>
-    </div>
+      <slot />
+    </main>
   </body>
 </html>

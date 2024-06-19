@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="none" viewBox="0 0 100 100">
     <style>
-        @keyframes grow {
+        /* @keyframes grow {
             0% {
                 opacity: 0
             }
@@ -12,7 +12,8 @@
             70% {
                 stroke-dasharray: 1200px 0
             }
-        }
+        } */
+   
 
         @media (prefers-reduced-motion) {
             .path1 {
@@ -23,10 +24,10 @@
 
         .path1 {
             stroke-dashoffset: 1px;
-            stroke-dasharray: 0 1200px;
-            animation: grow 12s ease-in-out forwards infinite;
+            stroke-dasharray: 1200px 0;
+            /* animation: grow 12s ease-in-out forwards infinite;
             transform-origin: center;
-            animation-delay: 0s
+            animation-delay: 0s */
         }
 
         .stop1 {

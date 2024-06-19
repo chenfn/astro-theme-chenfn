@@ -17,8 +17,11 @@ const { headings } = await post.render()
     image={`${import.meta.env.SITE}/posts/${post.slug}/og.png`}
     canonicalUrl={`${import.meta.env.SITE}/posts/${post.slug}/`}
     type='article'
->
-    <article class="prose max-w-none mx-auto mt-10">
-        <slot />
-    </article>
+>   
+    <div class="w-full mt-8 lg:flex lg:items-start">
+        {headings.length && <TableOfContents headings={headings} class="flex-grew" />}
+        <article class="prose w-full break-words mr-28">
+            <slot />
+        </article>
+    </div>
 </Layout>
