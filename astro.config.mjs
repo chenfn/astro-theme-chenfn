@@ -1,6 +1,6 @@
 
-import { defineConfig } from 'astro/config'
-// import cloudflare from "@astrojs/cloudflare";
+import { defineConfig, passthroughImageService } from 'astro/config'
+import cloudflare from "@astrojs/cloudflare";
 import mdx from '@astrojs/mdx'
 import sitemap from '@astrojs/sitemap'
 import UnoCSS from 'unocss/astro'
@@ -45,9 +45,9 @@ export default defineConfig({
     }),
   ],
   // // cloudflare, deno not support astro image optimization
-  // image: {
-  //   service: passthroughImageService()
-  // },
-  // output: 'server',
-  // adapter: cloudflare(),
+  image: {
+    service: passthroughImageService()
+  },
+  output: 'server',
+  adapter: cloudflare(),
 })

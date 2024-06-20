@@ -10,6 +10,7 @@ interface Props {
   post: CollectionEntry<'posts'>
 }
 
+export const prerender = true
 export const getStaticPaths = (async () => {
   const posts = await fetchPosts()
   return posts.map((post) => ({
