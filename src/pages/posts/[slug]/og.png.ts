@@ -6,7 +6,6 @@ interface Props {
   props: { post: CollectionEntry<'posts'> }
 }
 
-export const prerender = true
 export async function GET({ props }: Props) {
   const { post } = props
 
