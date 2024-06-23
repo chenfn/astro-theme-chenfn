@@ -6,19 +6,21 @@
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro check && astro build",
-    "preview": "astro preview",
-    "astro": "astro"
+    "preview": "astro build && wrangler pages dev",
+    "astro": "astro",
+    "deploy": "astro build && wrangler pages deploy",
+    "cf-typegen": "wrangler types"
   },
   "dependencies": {
     "@astrojs/check": "^0.7.0",
-    "@astrojs/cloudflare": "^10.4.0",
+    "@astrojs/cloudflare": "^11.0.0",
     "@astrojs/mdx": "^3.1.1",
     "@astrojs/rss": "^4.0.6",
     "@astrojs/sitemap": "^3.1.6",
     "@playform/compress": "^0.0.12",
     "@vercel/og": "^0.6.2",
     "add": "^2.0.6",
-    "astro": "^4.10.3",
+    "astro": "^4.11.0",
     "dayjs": "^1.11.11",
     "mdast-util-to-string": "^4.0.0",
     "reading-time": "^1.5.0",
@@ -28,13 +30,15 @@
   },
   "devDependencies": {
     "@biomejs/biome": "1.7.3",
+    "@cloudflare/workers-types": "^4.20240620.0",
     "@expressive-code/plugin-line-numbers": "^0.35.3",
     "@iconify-json/line-md": "^1.1.37",
     "@iconify-json/ri": "^1.1.20",
     "@iconify-json/tabler": "^1.1.112",
     "@unocss/reset": "^0.60.2",
     "astro-expressive-code": "^0.35.3",
-    "unocss": "^0.60.2"
+    "unocss": "^0.60.2",
+    "wrangler": "^3.61.0"
   },
   "packageManager": "pnpm@9.2.0+sha512.98a80fd11c2e7096747762304106432b3ddc67dcf54b5a8c01c93f68a2cd5e05e6821849522a06fb76284d41a2660d5e334f2ee3bbf29183bf2e739b1dafa771"
 }

@@ -4,6 +4,7 @@
     "baseUrl": ".",
     "strictNullChecks": true,
     "allowJs": true,
+    "types": ["@cloudflare/workers-types/2023-07-01"],
     "paths": {
       "@/*": ["./src/*"],
       "config": ["site.config.ts"]

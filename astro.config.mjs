@@ -49,5 +49,10 @@ export default defineConfig({
     service: passthroughImageService()
   },
   output: 'server',
-  adapter: cloudflare(),
+  adapter: cloudflare({
+    imageService: "passthrough",
+    platformProxy: {
+      enabled: true
+    }
+  }),
 })
