@@ -1,0 +1,33 @@
+---
+import TitleSection from "@/components/TitleSection.astro";
+import Layout from "@/layouts/Layout.astro";
+import config from "config";
+
+const friends = config.friends
+---
+
+<Layout title="Chen's friends" description="Chen and his friends">
+    <TitleSection title="Friends" description="" />
+
+    <div class="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+        {
+            friends?.map(f => (
+                <div class="bg-[#CCC] dark:bg-[#111] bg-op-10 p-4 rd-sm">
+                    <a href={f.url} title="goto">
+                    <div class="flex items-center gap-x-4">
+                        <img class="rounded-2xl size-16 bg-blue-1"src={f.avatar} alt="friend avatar" />
+
+                        <div class="grow">
+                            <h3 class="text-xl font-600 text-gray-800 dark:text-neutral-200">{f.name}</h3>
+                            <p class="text-sm font-300 mt-1 text-gray-500 dark:text-neutral-500">{f.bio}</p>
+                        </div>
+                    </div>
+                    <p class="mt-3 text-gray-600 dark:text-neutral-400 h-15">
+                        {f.desc}
+                    </p>
+                    </a>
+                </div>
+            ))
+        }
+    </div>
+</Layout>

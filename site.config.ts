@@ -8,6 +8,15 @@ const config: SiteConfig = {
     src: "", 
     alt: "logo",
   },
+  friends: [
+    {
+      name: "Chenfn",
+      bio: "green hand",
+      url: "https://chenfn.com",
+      desc: "A description",
+      avatar: "/logo.svg"
+    }
+  ]
 }
 
 export default config

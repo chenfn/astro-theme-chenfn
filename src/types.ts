@@ -31,8 +31,9 @@ interface ThemedLogo {
   interface Friend {
     name: string
     url: string
-    avatar?: string
-    desc?: string
+    bio: string
+    avatar: string
+    desc: string
   }
   
   export interface SiteConfig {
