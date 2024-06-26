@@ -1,6 +1,5 @@
 
-import { defineConfig, passthroughImageService } from 'astro/config'
-import cloudflare from "@astrojs/cloudflare";
+import { defineConfig } from 'astro/config'
 import mdx from '@astrojs/mdx'
 import sitemap from '@astrojs/sitemap'
 import UnoCSS from 'unocss/astro'
@@ -12,7 +11,6 @@ import config from './site.config'
 // https://astro.build/config
 export default defineConfig({
   site: config.url,
-  prefetch: true,
   markdown: {
     rehypePlugins: [
       remarkReadingTime,
@@ -44,15 +42,6 @@ export default defineConfig({
       Logger: 2,
     }),
   ],
-  // // cloudflare, deno not support astro image optimization
-  image: {
-    service: passthroughImageService()
-  },
-  output: 'server',
-  adapter: cloudflare({
-    imageService: "passthrough",
-    platformProxy: {
-      enabled: true
-    }
-  }),
+  prefetch: true,
+  output: 'static',
 })
